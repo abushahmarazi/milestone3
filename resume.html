@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Center the resume container and set width to 70% */
+        .resume-container {
+            width: 50%;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        
+        .resume-header {
+            text-align: left;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .resume-header h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #ffffff;
+        }
+        
+        .resume-header p {
+            margin: 5px 0;
+            color: #ffffff;
+        }
+        
+        .resume-body h2 {
+            color: #444;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .resume-body p {
+            color: #333;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="resume-header">
+            <h1 id="display-name"></h1>
+            <p><strong>Email:</strong> <span id="display-email"></span></p>
+            <p><strong>Phone:</strong> <span id="display-phone"></span></p>
+            <p><strong>LinkedIn:</strong> <a href="#" id="display-linkedin" target="_blank"></a></p>
+        </header>
+        <section class="resume-body">
+            <h2>Summary</h2>
+            <p id="display-summary"></p>
+
+            <h2>Education</h2>
+            <p id="display-education"></p>
+
+            <h2>Work Experience</h2>
+            <p id="display-work"></p>
+
+            <h2>Skills</h2>
+            <p id="display-skills"></p>
+        </section>
+    </div>
+
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                name: urlParams.get('name'),
+                email: urlParams.get('email'),
+                phone: urlParams.get('phone'),
+                linkedin: urlParams.get('linkedin'),
+                summary: urlParams.get('summary'),
+                education: urlParams.get('education'),
+                work: urlParams.get('work'),
+                skills: urlParams.get('skills')
+            };
+        }
+
+        // Display the data on the page
+        function displayResume() {
+            const params = getQueryParams();
+            document.getElementById('display-name').textContent = params.name;
+            document.getElementById('display-email').textContent = params.email;
+            document.getElementById('display-phone').textContent = params.phone;
+            document.getElementById('display-linkedin').textContent = params.linkedin;
+            document.getElementById('display-linkedin').href = params.linkedin;
+            document.getElementById('display-summary').textContent = params.summary;
+            document.getElementById('display-education').textContent = params.education;
+            document.getElementById('display-work').textContent = params.work;
+            document.getElementById('display-skills').textContent = params.skills;
+        }
+
+        // Call the function to display the resume
+        window.onload = displayResume;
+    </script>
+</body>
+</html>
